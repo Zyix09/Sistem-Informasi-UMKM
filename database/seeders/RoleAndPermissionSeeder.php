@@ -25,6 +25,7 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'user.management']);
         Permission::create(['name' => 'role.permission.management']);
         Permission::create(['name' => 'menu.management']);
+        Permission::create(['name' => 'master.management']);
         //user
         Permission::create(['name' => 'user.index']);
         Permission::create(['name' => 'user.create']);
@@ -72,6 +73,10 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'menu-item.edit']);
         Permission::create(['name' => 'menu-item.destroy']);
 
+        // master item
+        Permission::create(['name' => 'master.tambah']);
+        Permission::create(['name' => 'master.daftarproduct']);
+
         // create roles 
         $roleUser = Role::create(['name' => 'user']);
         $roleUser->givePermissionTo([
@@ -83,11 +88,15 @@ class RoleAndPermissionSeeder extends Seeder
         // create Super Admin
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
+        $role = Role::create(['name' => 'pembeli']);
+        $role->givePermissionTo(Permission::all());
 
         //assign user id 1 ke super admin
         $user = User::find(1);
         $user->assignRole('super-admin');
         $user = User::find(2);
         $user->assignRole('user');
+        $user = User::find(3);
+        $user->assignRole('pembeli');
     }
 }

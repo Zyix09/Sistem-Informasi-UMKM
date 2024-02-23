@@ -66,6 +66,18 @@ class MenuItemSeeder extends Seeder
                     'permission_name' => 'menu-item.index',
                     'menu_group_id' => 4,
                 ],
+                [
+                    'name' => 'Tambah Product',
+                    'route' => 'master-management/tambah-product',
+                    'permission_name' => 'master.tambah',
+                    'menu_group_id' => 5,
+                ],
+                [
+                    'name' => 'Daftar Product',
+                    'route' => 'master-management/daftar-product',
+                    'permission_name' => 'master.daftarproduct',
+                    'menu_group_id' => 5,
+                ],
             ]
         );
     }

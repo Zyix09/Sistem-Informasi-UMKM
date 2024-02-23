@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fotos', function (Blueprint $table) {
+        Schema::create('categoryitems', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_foto')->onDelete('cascade');
+            $table->string('nama_category');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fotos');
+        Schema::dropIfExists('categoryitems');
     }
 };

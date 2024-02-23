@@ -1,0 +1,149 @@
+.navbar-header {
+    display: flex;
+    align-items: center;
+}
+
+.navlogo {
+    margin-right: 20px;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding-left: 500px;
+    margin: 0;
+    display: flex;
+    flex-flow:wrap;
+}
+
+.nav-links li {
+    margin-right: 10px;
+ 
+}
+
+
+.header {
+    background: url("../img/gambar/image 97.png") center center;
+    color: #FFF;
+    height: 800px;
+    position: relative;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -msn-background-size: cover;
+}
+
+.header .overlay {
+    background: rgba(0, 0, 0, 0.58);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.header .navbar-default {
+    background-color: transparent !important;
+    border-color: transparent;
+    background-image: none;
+    box-shadow: none;
+}
+
+.header .navbar-default .navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.header .navbar-default .navbar-nav>li>a {
+    font-size: 20px;
+    color: #fff;
+    border-bottom: 1px solid transparent
+}
+
+.header .navbar-default .navbar-nav>li:hover a {
+    color: #333;
+    border-bottom: 1px solid #FFF
+}
+
+
+.header .navbar-toggle {
+    margin: 10px 0;
+    background: #36C;
+    color: #FFF;
+}
+
+.title-middle{
+        margin-left: 500px;
+        margin-top: 200px;
+}
+
+.middle-about{
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+       
+    
+}
+
+.text-tentang{
+    margin-top: 107px;
+}
+
+.text-tentang p {
+    padding-top: 15px;
+}
+
+.card-img-top{
+    width: min-content;
+    height: min-content;
+    place-self: center;
+}
+
+.person-img{
+    max-width: 100px;
+    max-height: 100px;
+    margin-top: -11px;
+}
+
+.person-profile{
+        border-radius: 25px;
+            box-shadow: 0 0 3px;
+            height: 329px;
+}
+
+.column-profile{
+        font-family: system-ui;
+            padding-top: 80px;
+}
+
+.title-profile{
+        padding-top: 60px;
+}
+
+
+
+
+
+
+@media screen and (max-width: 1500px) {
+    .title-middle {
+        margin-left: 500px;
+    }
+}
+
+
+
+@media screen and (min-width: 1200px) {
+.middle-about {
+        max-width: 1500px;
+} 
+
+.title-middle {
+    margin-left: 300px;
+}
+}
+

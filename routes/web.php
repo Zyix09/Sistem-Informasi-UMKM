@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\MasterController;
 use App\Http\Controllers\Menu\MenuGroupController;
 use App\Http\Controllers\Menu\MenuItemController;
 use App\Http\Controllers\RoleAndPermission\AssignPermissionController;
@@ -27,14 +28,36 @@ use App\Models\Category;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth/login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth/register');
+})->name('register');
+
+Route::get('/', function () {
+    return view('landingpage.index');
 });
+Route::get('/homepage', function () {
+    return view('homepage.index');
+});
+Route::get('/homepage1', function () {
+    return view('homepage.index1');
+});
+Route::get('/detailpage', function () {
+    return view('detailpage.index');
+});
+
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function () {
         return view('home', ['users' => User::get(),]);
     });
+    Route::get('/profile', function () {
+        return view('profile.index');
+    })->name('profile.edit');
+
     //user list
 
     Route::prefix('user-management')->group(function () {
@@ -47,6 +70,11 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::prefix('menu-management')->group(function () {
         Route::resource('menu-group', MenuGroupController::class);
         Route::resource('menu-item', MenuItemController::class);
+    });
+
+    Route::prefix('master-management')->group(function () {
+        Route::resource('tambah-product', MasterController::class);
+        Route::resource('tambah-product', MasterController::class);
     });
     Route::group(['prefix' => 'role-and-permission'], function () {
         //role

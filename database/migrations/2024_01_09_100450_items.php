@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInterger('user_id');
-            $table->unsignedBigInterger('foto_id');
-            $table->foreign('user_id')->reference('id')->on('users')->onDelete('cascade');
-            $table->foreign('foto_id')->reference('id')->on('foto_items')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id'); 
+            $table->unsignedBigInteger('categoryitem_id'); 
+            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete();
+            $table->foreign('categoryitem_id')->references('id')->on('categoryitems')->restrictOnDelete();
             $table->string('nama_barang');
-            $table->bigInteger('berat_satuan');
+            $table->string('harga_barang');
             $table->string('deskripsi');
             $table->integer('stok');
+            $table->bigInteger('berat_satuan');
             $table->timestamps();
         });
     }

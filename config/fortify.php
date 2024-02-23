@@ -62,6 +62,9 @@ return [
     */
 
     'home' => RouteServiceProvider::HOME,
+    'home-user' => RouteServiceProvider::HOME_USER,
+    'home-pembeli' => RouteServiceProvider::HOME_PEMBELI,
+
 
     /*
     |--------------------------------------------------------------------------

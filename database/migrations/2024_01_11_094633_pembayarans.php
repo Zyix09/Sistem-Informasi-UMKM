@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->foreachId('user_id')->constanined('users')->onDelete('restrict');
-            $table->foreachId('item_id')->constanined('items')->onDelete('restrict');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('keranjang_id');
+            $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete();
+            $table->foreign('keranjang_id')->references('id')->on('keranjangs')->restrictOnDelete();
             $table->string('reference');
             $table->string('merchan_ref');
             $table->integer('total_amount');
-            $table->enum('status', ['paid', 'unpaid'])->default('unpaid');
+            $table->enum('status', ['paid', 'pending' , 'unpaid'])->default('unpaid');
             $table->timestamps();
         });
     }
