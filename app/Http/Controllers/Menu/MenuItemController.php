@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Menu;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMenuItemRequest;
+use App\Http\Requests\UpdateMenuItemRequest;
 use App\Models\MenuGroup;
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
@@ -77,8 +78,15 @@ class MenuItemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(MenuItem $menuItem)
+
     {
-        return view('menu.menu-item.edit', compact('menuItem'));
+        $menuGroups = MenuGroup::all();
+        $routeCollection = Route::getRoutes();
+
+        return view('menu.menu-item.edit', compact(
+            'routeCollection',
+            'menuGroups',
+            'menuItem'));
     }
 
     /**

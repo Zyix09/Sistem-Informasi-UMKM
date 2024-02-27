@@ -175,7 +175,7 @@
                                                     <div class="card-body">
                                                         <img src="{{ asset('assets/img/avatar/pengajar.png') }}"
                                                             alt="Pengajar">
-                                                        <h4 class="card-title">Tutor</h4>
+                                                        <h4 class="card-title">Penjual</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,7 +184,7 @@
                                                     <div class="card-body">
                                                         <img src="{{ asset('assets/img/avatar/user.png') }}"
                                                             alt="User">
-                                                        <h4 class="card-title">Siswa</h4>
+                                                        <h4 class="card-title">Pengguna</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,6 +244,18 @@
                                             </div>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="password_confirmation" class="d-block">Password Confirmation</label>
+                                        <input id="password_confirmation" name="password_confirmation" type="password"
+                                            class="form-control" placeholder="Masukkan Konfirmasi Password">
+                                        @error('password')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block"
