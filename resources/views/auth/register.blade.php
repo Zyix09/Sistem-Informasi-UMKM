@@ -170,8 +170,8 @@
                                         <label for="user_type">Pilih role sebelum melakukan registrasi!</label><br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="card role-card" id="user-pengajar-card"
-                                                    onclick="selectRole('user-pengajar')">
+                                                <div class="card role-card" id="user-penjual-card"
+                                                    onclick="selectRole('penjual')">
                                                     <div class="card-body">
                                                         <img src="{{ asset('assets/img/avatar/pengajar.png') }}"
                                                             alt="Pengajar">
@@ -180,7 +180,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="card role-card" id="user-card" onclick="selectRole('user')">
+                                                <div class="card role-card" id="user-pengguna-card" onclick="selectRole('pengguna')">
                                                     <div class="card-body">
                                                         <img src="{{ asset('assets/img/avatar/user.png') }}"
                                                             alt="User">
@@ -245,11 +245,22 @@
                                         @enderror
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="password_confirmation" class="d-block">Password Confirmation</label>
-                                        <input id="password_confirmation" name="password_confirmation" type="password"
-                                            class="form-control" placeholder="Masukkan Konfirmasi Password">
-                                        @error('password')
+                                    <div class="form-group" id="penjual-nik" style="display: none;">
+                                        <label for="nik" class="d-block">NIK</label>
+                                        <input id="nik" name="password_confirmation" type="password"
+                                            class="form-control" placeholder="Masukkan NIK">
+                                        @error('nik')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group" id="penjual-tanggal" style="display: none;">
+                                        <label for="tanggal_lahir" class="d-block">tanggal lahir</label>
+                                        <input id="tanggal_lahir" name="password_confirmation" type="password"
+                                            class="form-control" placeholder="Masukkan Tanggal Lahir">
+                                        @error('tanggallahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -282,14 +293,47 @@
     <script>
         // Script to handle role selection
         function selectRole(role) {
-            document.getElementById('user_type').value = role;
+
+            // const penjual = document.getElementById(role + 'user-penjual-card').innerHTML;
+            // const pengguna = document.getElementById(role + 'user-pengguna-card').innerHTML;
+            const nikInput = document.getElementById("penjual-nik");
+            const dateInput = document.getElementById("penjual-tanggal");
+
             var cards = document.getElementsByClassName('role-card');
+
             for (var i = 0; i < cards.length; i++) {
                 cards[i].classList.remove('active');
             }
-            document.getElementById(role + '-card').classList.add('active');
+
+            if (role === 'penjual') {
+                nikInput.style.display = 'block';
+                dateInput.style.display = 'block';
+            } else if (role === 'pengguna') {
+                nikInput.style.display = 'none';
+                dateInput.style.display = 'none';
+            }
+
+            // document.getElementById(role.id).classList.add('active');
         }
     </script>
+
+
+    {{-- <script>
+
+function selectRole(role) {
+   document.getElementById('user_type').value = role;
+  const nikInput = document.getElementById("penjual-nik");
+  const dateInput = document.getElementById("penjual-tanggal");
+
+  if (role === "user-penjual"){
+    nikInput.style.display = 'block';
+    dateInput.style.display = 'block';
+  } else if (role === "user") {
+    nikInput.style.display = 'none';
+    dateInput.style.display = 'none';
+  }
+}
+    </script> --}}
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
