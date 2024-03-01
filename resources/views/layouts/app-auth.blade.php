@@ -147,31 +147,6 @@
         </section>
     </div>
 
-    <script>
-        // Script to handle role selection
-        function selectRole(role) {
-
-            // const penjual = document.getElementById(role + 'user-penjual-card').innerHTML;
-            // const pengguna = document.getElementById(role + 'user-pengguna-card').innerHTML;
-            const nikInput = document.getElementById("penjual-nik");
-            const dateInput = document.getElementById("penjual-tanggal");
-
-            var cards = document.getElementsByClassName('role-card');
-
-            for (var i = 0; i < cards.length; i++) {
-                cards[i].classList.remove('active');
-            }
-
-            if (role === 'penjual') {
-                nikInput.style.display = 'block';
-                dateInput.style.display = 'block';
-            } else if (role === 'pengguna') {
-                nikInput.style.display = 'none';
-                dateInput.style.display = 'none';
-            }
-        }
-    </script>
-
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

@@ -3,11 +3,14 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\ProfileUmkm;
+use App\Models\ProfileUser;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Spatie\Permission\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -63,10 +66,32 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ], $customMessages)->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
+            'email_verified_at' => now(),
         ]);
+
+        $roleName = ($input['user_type'] === 'penjual') ? 'Penjual' : 'Pengguna';
+        $role = Role::where('name', $roleName)->first();
+        $user->assignRole($role);
+
+        if ($roleName == 'Penjual') {
+            ProfileUser::create([
+                'id_user' => $user->id,
+            ]);
+            ProfileUmkm::create([
+                'id_user' => $user->id,
+                'nik' => $input['nik'],
+            ]);
+        } elseif ($roleName == 'Pengguna') {
+            ProfileUser::create([
+                'id_user' => $user->id,
+            ]);
+        } else {
+            //
+        }
+        return $user;
     }
 }
