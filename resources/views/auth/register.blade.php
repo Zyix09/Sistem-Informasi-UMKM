@@ -96,8 +96,7 @@
 
         .role-card img {
             width: auto;
-            height: auto;
-            object-fit: cover;
+            width: 35%;
         }
 
         .role-card:hover {
@@ -145,11 +144,11 @@
                     <div style="background-color:#d2d8e7;">
                         <div class="card-body">
                             <div class="col mt-1">
-                                <img src="{{ asset('assets/img/avatar/GuruLink.png') }}" alt="" srcset=""
+                                <img src="{{ asset('assets/img/avatar/logo.png') }}" alt="" srcset=""
                                     style="width: 20%">
                             </div>
                             <div class="col mt-5">
-                                <img src="{{ asset('assets/img/avatar/cuate.png') }}" alt="" srcset=""
+                                <img src="{{ asset('assets/img/avatar/regis.png') }}" alt="" srcset=""
                                     style="width: 100%">
                             </div>
                         </div>
@@ -173,7 +172,7 @@
                                                 <div class="card role-card" id="user-penjual-card"
                                                     onclick="selectRole('penjual')">
                                                     <div class="card-body">
-                                                        <img src="{{ asset('assets/img/avatar/pengajar.png') }}"
+                                                        <img src="{{ asset('assets/img/avatar/seller.png') }}"
                                                             alt="Pengajar">
                                                         <h4 class="card-title">Penjual</h4>
                                                     </div>
@@ -182,7 +181,7 @@
                                             <div class="col-md-6">
                                                 <div class="card role-card" id="user-pengguna-card" onclick="selectRole('pengguna')">
                                                     <div class="card-body">
-                                                        <img src="{{ asset('assets/img/avatar/user.png') }}"
+                                                        <img src="{{ asset('assets/img/avatar/buyer.png') }}"
                                                             alt="User">
                                                         <h4 class="card-title">Pengguna</h4>
                                                     </div>

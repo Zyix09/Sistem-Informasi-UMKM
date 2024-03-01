@@ -94,15 +94,15 @@
             <div class="row d-flex justify-content-between m-0">
 
                 <div class="col-md-6 col-sm-6 col-lg-6 full-height-card">
-                    <div style="background-color:#d2d8e7;">
+                    <div style="background-color:#597dd8;">
                         <div class="card-body">
                             <div class="col mt-1">
                                 {{-- <h5>GuruLink</h5> --}}
-                                <img src="{{ asset('assets/img/avatar/GuruLink.png') }}" alt="" srcset=""
+                                <img src="{{ asset('assets/img/avatar/logo.png') }}" alt="" srcset=""
                                     style="width: 20%">
                             </div>
                             <div class="col mt-5">
-                                <img src="{{ asset('assets/img/avatar/cuate.png') }}" alt="" srcset=""
+                                <img src="{{ asset('assets/img/avatar/login.png') }}" alt="" srcset=""
                                     style="width: 100%">
                             </div>
                         </div>
