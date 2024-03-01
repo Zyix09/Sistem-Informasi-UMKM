@@ -65,6 +65,7 @@
         }
 
         /* Input style */
+        .input-container input[type="date"],
         .input-container input[type="text"],
         .input-container input[type="email"],
         .input-container input[type="password"] {
@@ -168,28 +169,8 @@
                 nikInput.style.display = 'none';
                 dateInput.style.display = 'none';
             }
-
-            // document.getElementById(role.id).classList.add('active');
         }
     </script>
-
-
-    {{-- <script>
-
-function selectRole(role) {
-   document.getElementById('user_type').value = role;
-  const nikInput = document.getElementById("penjual-nik");
-  const dateInput = document.getElementById("penjual-tanggal");
-
-  if (role === "user-penjual"){
-    nikInput.style.display = 'block';
-    dateInput.style.display = 'block';
-  } else if (role === "user") {
-    nikInput.style.display = 'none';
-    dateInput.style.display = 'none';
-  }
-}
-    </script> --}}
 
     <!-- General JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"

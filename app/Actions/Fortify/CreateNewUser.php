@@ -21,7 +21,6 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        // dd($input);
         $customMessages = [
             'user_type.required' => 'Wajib pilih tipe pengguna wajib diisi.',
             'name.required' => 'Nama lengkap wajib diisi.',
@@ -34,6 +33,9 @@ class CreateNewUser implements CreatesNewUsers
             'password.required' => 'Password wajib diisi.',
             'password.min' => 'Password minimal 8 karakter.',
             'password.confirmed' => 'Konfirmasi password tidak sesuai dengan password.',
+            'nik.required' => 'NIK wajib diisi.',
+            'tanggal_lahir.required' => 'Tanggal Lahir wajib diisi.',
+
         ];
 
         Validator::make($input, [
