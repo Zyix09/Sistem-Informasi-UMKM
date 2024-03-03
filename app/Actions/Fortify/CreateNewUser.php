@@ -24,6 +24,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        // dd($input);
         $customMessages = [
             'user_type.required' => 'Wajib pilih tipe pengguna wajib diisi.',
             'name.required' => 'Nama lengkap wajib diisi.',
@@ -51,10 +52,12 @@ class CreateNewUser implements CreatesNewUsers
                 'required'
             ],
             'nik' => [
-                'required'
+                'nullable', // Make 'nik' field optional
+                'required_if:user_type,penjual', // Required only if 'user_type' is 'penjual'
             ],
             'tanggal_lahir' => [
-                'required'
+                'nullable', // Make 'tanggal_lahir' field optional
+                'required_if:user_type,penjual', // Required only if 'user_type' is 'pengguna'
             ],
             'email' => [
                 'required',
