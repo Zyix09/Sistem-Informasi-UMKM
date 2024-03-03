@@ -42,9 +42,15 @@
                         </div>
                         <div class="form-group">
                             <label for="password" class="control-label">Password</label>
-                            <input type="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror"
-                                placeholder="Masukkan Password">
+                            <div style="position: relative;">
+                                <input id="password-field" type="password" name="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    placeholder="Masukkan Password" style="padding-right: 40px;">
+                                <a href="#" id="toggle-password-visibility"
+                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">
+                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                </a>
+                            </div>
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -75,4 +81,15 @@
 @push('customStyleAuth')
 @endpush
 @push('customScriptAuth')
+    <script>
+        document.getElementById('toggle-password-visibility').addEventListener('click', function(e) {
+            e.preventDefault();
+            var passwordField = document.getElementById('password-field');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    </script>
 @endpush
