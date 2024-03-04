@@ -61,13 +61,13 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'assign.user.create']);
         Permission::create(['name' => 'assign.user.edit']);
 
-        //menu group 
+        //menu group
         Permission::create(['name' => 'menu-group.index']);
         Permission::create(['name' => 'menu-group.create']);
         Permission::create(['name' => 'menu-group.edit']);
         Permission::create(['name' => 'menu-group.destroy']);
 
-        //menu item 
+        //menu item
         Permission::create(['name' => 'menu-item.index']);
         Permission::create(['name' => 'menu-item.create']);
         Permission::create(['name' => 'menu-item.edit']);
@@ -77,7 +77,7 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'master.tambah']);
         Permission::create(['name' => 'master.daftarproduct']);
 
-        // create roles 
+        // create roles
         $roleUser = Role::create(['name' => 'user']);
         $roleUser->givePermissionTo([
             'dashboard',
@@ -98,5 +98,10 @@ class RoleAndPermissionSeeder extends Seeder
         $user->assignRole('user');
         $user = User::find(3);
         $user->assignRole('pembeli');
+
+        $role = Role::create(['name' => 'pengguna']);
+        $role->givePermissionTo(Permission::all());
+        $role = Role::create(['name' => 'penjual']);
+        $role->givePermissionTo(Permission::all());
     }
 }

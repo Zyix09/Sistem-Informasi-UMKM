@@ -104,8 +104,8 @@
                                         <label for="password_confirmation">Password Confirmation</label>
                                         <input id="password_confirmation" type="password"
                                             class="form-control @error('password_confirmation')
-                            is-invalid
-                        @enderror"
+                                                    is-invalid
+                                                @enderror"
                                             data-indicator="pwindicator" name="password_confirmation" tabindex="2">
                                         @error('password_confirmation')
                                             <div class="invalid-feedback">
@@ -162,6 +162,53 @@
                                             </div>
                                         @enderror
                                     </div>
+
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Jenis Kelamin</label>
+                                        <input name="name" type="text"
+                                            class="form-control @error('name', 'updateProfileInformation')
+                                    is-invalid
+                                    @enderror"
+                                            value="{{ Auth::user()->name }}">
+                                        @error('name', 'updateProfileInformation')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-13 col-12">
+                                        <label>Alamat</label>
+                                        <input name="name" type="text"
+                                            class="form-control @error('name', 'updateProfileInformation')
+                                    is-invalid
+                                    @enderror"
+                                            value="{{ Auth::user()->name }}">
+                                        @error('name', 'updateProfileInformation')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+
+                                    @if(Auth::user()->hasRole('penjual'))
+
+                                    <div class="form-group col-md-6 col-12">
+                                        <label>Nomor Handphone</label>
+                                        <input name="name" type="text"
+                                            class="form-control @error('name', 'updateProfileInformation')
+                                    is-invalid
+                                    @enderror"
+                                            value="{{ Auth::user()->name }}">
+                                        @error('name', 'updateProfileInformation')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @endif
+
+
                                 </div>
                             </div>
                             <div class="card-footer text-right">
@@ -170,7 +217,13 @@
                         </form>
                     </div>
                 </div>
+
+
+
+
             </div>
+
+
         </div>
     </section>
 @endsection
