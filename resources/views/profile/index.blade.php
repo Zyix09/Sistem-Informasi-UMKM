@@ -191,10 +191,42 @@
                                         @enderror
                                     </div>
 
-                                    @if(Auth::user()->hasRole('penjual'))
+                                    @if (Auth::user()->hasRole('penjual'))
+                                        <div class="form-group col-md-6 col-12">
+                                            <label>Nomor Handphone</label>
+                                            <input name="name" type="text"
+                                                class="form-control @error('name', 'updateProfileInformation')
+                                    is-invalid
+                                    @enderror"
+                                                value="{{ Auth::user()->name }}">
+                                            @error('name', 'updateProfileInformation')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    @endif
 
+
+                                </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <button class="btn btn-primary" type="submit">Change Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <form method="POST" action="{{ route('user-profile-information.update') }}"
+                            class="needs-validation" novalidate="">
+                            @csrf
+                            @method('PUT')
+                            <div class="card-header">
+                                <h4>Edit Data Diri</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Nomor Handphone</label>
+                                        <label>Jenis Kelamin</label>
                                         <input name="name" type="text"
                                             class="form-control @error('name', 'updateProfileInformation')
                                     is-invalid
@@ -206,9 +238,35 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    @endif
 
-
+                                    <div class="form-group col-md-13 col-12">
+                                        <label>Alamat</label>
+                                        <input name="name" type="text"
+                                            class="form-control @error('name', 'updateProfileInformation')
+                                    is-invalid
+                                    @enderror"
+                                            value="{{ Auth::user()->name }}">
+                                        @error('name', 'updateProfileInformation')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    @role('penjual')
+                                        <div class="form-group col-md-6 col-12">
+                                            <label>Nomor Handphone</label>
+                                            <input name="name" type="text"
+                                                class="form-control @error('name', 'updateProfileInformation')
+                                    is-invalid
+                                    @enderror"
+                                                value="{{ Auth::user()->name }}">
+                                            @error('name', 'updateProfileInformation')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    @endrole
                                 </div>
                             </div>
                             <div class="card-footer text-right">
@@ -217,13 +275,7 @@
                         </form>
                     </div>
                 </div>
-
-
-
-
             </div>
-
-
         </div>
     </section>
 @endsection

@@ -31,20 +31,20 @@
                                         onclick="selectRole('penjual')"
                                         class="card role-card" @endif>
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/avatar/seller.png') }}" alt="Pengajar">
+                                            <img src="{{ asset('assets/img/avatar/seller.png') }}" alt="penjual">
                                             <h4 class="card-title">Penjual</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="user-pengguna-card" data-role="pengguna"
-                                        @if (old('user_type') == 'pengguna') class="card role-card active"
+                                    <div id="user-pembeli-card" data-role="pembeli"
+                                        @if (old('user_type') == 'pembeli') class="card role-card active"
                                         @else
-                                        onclick="selectRole('pengguna')"
+                                        onclick="selectRole('pembeli')"
                                         class="card role-card" @endif>
                                         <div class="card-body">
-                                            <img src="{{ asset('assets/img/avatar/buyer.png') }}" alt="User">
-                                            <h4 class="card-title">Pengguna</h4>
+                                            <img src="{{ asset('assets/img/avatar/buyer.png') }}" alt="pembeli">
+                                            <h4 class="card-title">Pembeli</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -199,12 +199,12 @@
                 const selectedCard = document.getElementById('user-' + role + '-card');
                 selectedCard.classList.add('active');
                 document.getElementById('user_type').value = 'penjual';
-            } else if (role === 'pengguna') {
+            } else if (role === 'pembeli') {
                 nikInput.style.display = 'none';
                 dateInput.style.display = 'none';
                 const selectedCard = document.getElementById('user-' + role + '-card');
                 selectedCard.classList.add('active');
-                document.getElementById('user_type').value = 'pengguna';
+                document.getElementById('user_type').value = 'pembeli';
             }
         }
     </script>

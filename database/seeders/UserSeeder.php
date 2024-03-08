@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
-     */
+    */
     public function run()
     {
         User::create([
@@ -22,8 +22,8 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
         User::create([
-            'name' => "user",
-            'email' => "user@gmail.com",
+            'name' => "penjual",
+            'email' => "penjual@gmail.com",
             'password' => Hash::make('password'),
             'email_verified_at' => now(),
         ]);

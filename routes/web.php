@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\Menu\MenuGroupController;
 use App\Http\Controllers\Menu\MenuItemController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleAndPermission\AssignPermissionController;
 use App\Http\Controllers\RoleAndPermission\AssignUserToRoleController;
 use App\Http\Controllers\RoleAndPermission\ExportPermissionController;
@@ -37,10 +40,13 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::get('/', function () {
-    return view('landingpage.index');
+    return view('auth/login');
 });
 Route::get('/homepage', function () {
     return view('homepage.index');
+});
+Route::get('/landing', function () {
+    return view('landingpage.index');
 });
 Route::get('/homepage1', function () {
     return view('homepage.index1');
@@ -51,9 +57,11 @@ Route::get('/detailpage', function () {
 
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/dashboard', function () {
-        return view('home', ['users' => User::get(),]);
-    });
+    // Route::get('/dashboard', function () {
+    //     return view('home', ['users' => User::get(),]);
+    // });
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/profile', function () {
         return view('profile.index');
     })->name('profile.edit');
@@ -76,6 +84,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::resource('tambah-product', MasterController::class);
         Route::resource('tambah-product', MasterController::class);
     });
+
     Route::group(['prefix' => 'role-and-permission'], function () {
         //role
         Route::resource('role', RoleController::class);
@@ -101,4 +110,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::get('assing-user/{user}/edit', [AssignUserToRoleController::class, 'edit'])->name('assign.user.edit');
         Route::put('assign-user/{user}', [AssignUserToRoleController::class, 'update'])->name('assign.user.update');
     });
+
+    // Route::group(['prefix' => 'homepage'], function () {
+        Route::get('/shop', [HomeController::class, 'index'])->name('homepage.index');
+        Route::get('/profile', [HomeController::class, 'profile'])->name('homepage.profile');
+        Route::get('/search', [HomeController::class, 'search'])->name('homepage.search');
+        Route::get('/detail', [HomeController::class, 'detail'])->name('homepage.detail');
+        Route::post('/profile-user', [HomeController::class, 'update'])->name('homepage.update');
+    // });
+});
+
+
+
+Route::group(['middleware' => ['auth', 'verified', 'role:penjual']], function () {
+    Route::get('dashboard' , [DashboardController::class , 'index'])-> name('dashboard');
 });

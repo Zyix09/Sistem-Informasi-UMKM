@@ -25,29 +25,6 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->instance(
-            RegisterResponse::class,
-            new class implements RegisterResponse
-            {
-                public function toResponse($request)
-                {
-                    $user = Auth::user();
-                    $role = $user->roles->first()->name;
-
-                    if ($user->hasRole('user')) {
-                        return $request->wantsJson()
-                            ? response()->json(['two_factor' => false])
-                            : redirect(config('fortify.home-user'));
-                    }
-                    if ($user->hasRole('pembeli')) {
-                        return $request->wantsJson()
-                            ? response()->json(['two_factor' => false])
-                            : redirect(config('fortify.home-pembeli'));
-                    }
-                }
-            }
-        );
-
 
         $this->app->instance(
             LoginResponse::class,
@@ -61,15 +38,38 @@ class FortifyServiceProvider extends ServiceProvider
                             : redirect()->intended(config('fortify.home'));
                     }
 
-                    if (Auth::user()->hasRole('user')) {
+                    if (Auth::user()->hasRole('penjual')) {
                         return $request->wantsJson()
                             ? response()->json(['two_factor' => false])
-                            : redirect()->intended(config('fortify.home-user'));
+                            : redirect()->intended(config('fortify.home-penjual'));
                     }
                     if (Auth::user()->hasRole('pembeli')) {
                         return $request->wantsJson()
                             ? response()->json(['two_factor' => false])
                             : redirect()->intended(config('fortify.home-pembeli'));
+                    }
+                }
+            }
+        );
+
+        $this->app->instance(
+            RegisterResponse::class,
+            new class implements RegisterResponse
+            {
+                public function toResponse($request)
+                {
+                    $user = Auth::user();
+                    $roles = $user->getRoleNames();
+
+                    if ($user->hasRole('penjual')) {
+                        return $request->wantsJson()
+                            ? response()->json(['two_factor' => false])
+                            : redirect(config('fortify.home-penjual'));
+                    }
+                    if ($user->hasRole('pembeli')) {
+                        return $request->wantsJson()
+                            ? response()->json(['two_factor' => false])
+                            : redirect(config('fortify.home-pembeli'));
                     }
                 }
             }

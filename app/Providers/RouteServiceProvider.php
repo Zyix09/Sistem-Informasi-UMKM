@@ -18,8 +18,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/dashboard';
-    public const HOME_USER = '/visitor';
-    public const HOME_PEMBELI = '/dashboard';
+    public const HOME_PENJUAL = '/dashboard';
+    public const HOME_PEMBELI = '/shop';
 
 
     /**

@@ -76,7 +76,7 @@ class CreateNewUser implements CreatesNewUsers
             'email_verified_at' => now(),
         ]);
 
-        $roleName = ($input['user_type'] === 'penjual') ? 'Penjual' : 'Pengguna';
+        $roleName = ($input['user_type'] === 'penjual') ? 'penjual' : 'pembeli';
         $role = Role::where('name', $roleName)->first();
         $user->assignRole($role);
 
@@ -88,7 +88,7 @@ class CreateNewUser implements CreatesNewUsers
                 'id_user' => $user->id,
                 'nik' => $input['nik'],
             ]);
-        } elseif ($roleName == 'Pengguna') {
+        } elseif ($roleName == 'pembeli') {
             ProfileUser::create([
                 'id_user' => $user->id,
             ]);

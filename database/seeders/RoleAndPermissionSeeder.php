@@ -77,31 +77,39 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'master.tambah']);
         Permission::create(['name' => 'master.daftarproduct']);
 
-        // create roles
-        $roleUser = Role::create(['name' => 'user']);
-        $roleUser->givePermissionTo([
-            'dashboard',
-            'user.management',
-            'user.index',
-        ]);
+        // homepage
+        Permission::create(['name' => 'homepage.index']);
+        Permission::create(['name' => 'homepage.detail']);
+        Permission::create(['name' => 'homepage.search']);
+        Permission::create(['name' => 'homepage.profile']);
+        Permission::create(['name' => 'homepage.update']);
+
 
         // create Super Admin
-        $role = Role::create(['name' => 'super-admin']);
-        $role->givePermissionTo(Permission::all());
-        $role = Role::create(['name' => 'pembeli']);
-        $role->givePermissionTo(Permission::all());
+        $rolesuper = Role::create(['name' => 'super-admin']);
+        $rolesuper->givePermissionTo(Permission::all());
+
+
+        $rolepenjual = Role::create(['name' => 'penjual']);
+        $rolepenjual->givePermissionTo(Permission::all());
+        $rolepembeli = Role::create(['name' => 'pembeli']);
+        $rolepembeli->givePermissionTo([
+            'dashboard',
+            'homepage.profile',
+            'homepage.index',
+            'homepage.update',
+            'homepage.detail',
+        ]);
 
         //assign user id 1 ke super admin
         $user = User::find(1);
         $user->assignRole('super-admin');
-        $user = User::find(2);
-        $user->assignRole('user');
-        $user = User::find(3);
-        $user->assignRole('pembeli');
+        $userPenjual = User::find(2);
+        $userPenjual->assignRole('penjual');
+        $userPembeli = User::find(3);
+        $userPembeli->assignRole('pembeli');
 
-        $role = Role::create(['name' => 'pengguna']);
-        $role->givePermissionTo(Permission::all());
-        $role = Role::create(['name' => 'penjual']);
-        $role->givePermissionTo(Permission::all());
+
+
     }
 }
