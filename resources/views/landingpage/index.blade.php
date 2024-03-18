@@ -61,7 +61,8 @@
                                 <h1 class="font-weight-bold">Desa Wisata Wiringinsongo</h1>
                                 <p>Selamat datang di layanan penjualan produk UMKM Desa Wringinsongo. Kami memberikan
                                     pelayanan terbaik untuk memudahkan anda membeli produk kami.</p>
-                                <button class="btn btn-primary">Lihat Produk</button>
+                                <a href="{{ route('homepage.index') }}"><button class="btn btn-primary"> Lihat
+                                        Produk</button> </a>
                             </div>
                         </div>
                     </div>

@@ -13,80 +13,134 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
     <link rel="stylesheet" href="assets/css/detail.css">
     @stack('customStyle')
-    <style>
-        .navbar-custom {
-            background-color: #0056b3;
-            /* Warna background navbar */
-        }
 
-        .navbar-custom .navbar-brand,
-        .navbar-custom .navbar-nav .nav-link {
-            color: #ffffff;
-            /* Warna teks navbar */
-        }
-    </style>
 </head>
 
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary-nav sticky-top card">
         <div class="container">
-            <a class="navbar-brand" href="#">Desa Wisata Wiringinsongo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{{ asset('assets/img/avatar/logobiru.png') }}" style="max-content">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <div class="search">
+                        <span class="fa fa-search"></span>
+                        <input type="text" class="searchinput" placeholder="cari" aria-label="cari"
+                            aria-describedby="basic-addon1">
+                    </div>
+
+                </ul>
+                <ul class="navbar-nav ml-auto navbar-atas">
+                    <li class="nav-item active mr-4">
+                        <a class="nav-link text-primary" href="{{ route('homepage.index') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                    <li class="nav-item dropdown mr-4">
+                        <a class="nav-link text-primary dropdown-toggle" href="#" data-toggle="dropdown">
+                            Keranjang
+                            {{-- <span class="badge badge-pill badge-dark cart-count">{{ $totalItemCount }}</span> --}}
+
+                        </a>
+                        <ul class="dropdown-menu dropdown-menus dropdown-menu-right">
+                            <li>
+                                <div class="dropdown-header">
+                                    Keranjang Belanja Anda
+                                </div>
+                            </li>
+                            {{-- @if ($keranjangItems)
+                                <li class="dropdown-body">
+                                    @foreach ($keranjangItems as $item)
+                                        <div class="cart-item">
+                                            <div class="cart-item-name">{{ $item->nama_barang }}</div>
+                                            <div class="cart-item-price">Rp
+                                                {{ number_format($item->harga_barang, 0, ',', '.') }}</div>
+
+                                            <div class="cart-item-quantity">x{{ $cartItem->quantity }}</div>
+                                            <div class="cart-item-quantity">
+                                                <button class="btn btn-sm btn-danger btn-icon confirm-delete">
+                                                    <i class="fas fa-times"></i> Delete </button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </li>
+                                <li class="dropdown-body">
+                                    <div class="cart-item">
+                                        <div class="cart-item-lihat-keranjang">
+                                            <button class="btn btn-sm btn-primary btn-icon">
+                                                <i class="fas fa-times"></i> keranjang </button>
+                                        </div>
+                                        <div class="cart-item-lihat-checkout">
+                                            <a href="{{ route('pembayaran.index') }}"
+                                                class="btn btn-sm btn-warning btn-icon">
+                                                <i class="fas fa-times"></i> Checkout </a>
+                                        </div>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="dropdown-body text-center">
+                                    Keranjang Anda kosong
+                                </li>
+                            @endif --}}
+                        </ul>
                     </li>
                 </ul>
-                <ul class="navbar-nav navbar-right">
 
+                <ul class="navbar-nav ml-auto navbar-button">
+                    @if (!auth()->user())
+                        <li class="nav-item">
+                            <a class="px-4 py-1 btn text-primary mr-2 btn-login" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="px-4 py-1 btn btn-regis" href="{{ route('register') }}">Daftar</a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a href="#" data-toggle="dropdown"
+                                class="nav-link dropdown-toggle nav-link-lg nav-link-user text-primary authVerifikasi">
+                                @if (Auth::user()->profile && Auth::user()->profile->foto != '')
+                                    <img alt="image" src="{{ Storage::url(Auth::user()->profile->foto) }}"
+                                        class="rounded-circle mr-1" style="width: 35px; height: 35px;">
+                                @else
+                                    <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}"
+                                        class="rounded-circle mr-1" style="width: 35px; height: 35px;">
+                                @endif
+                                <div class="d-sm-none d-lg-inline-block">
+                                    Hai, {{ auth()->user()->name }}
+                                </div>
+                            </a>
 
-                    <li class="dropdown"><a href="#" data-toggle="dropdown"
-                            class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1"
-                                height="40px">
-                            <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-
-                            <a href="{{ route('homepage.profile') }}" class="dropdown-item has-icon">
-                                <i class="far fa-user"></i> Profile
-                            </a>
-                            <a href="features-activities.html" class="dropdown-item has-icon">
-                                <i class="fas fa-bolt"></i> Activities
-                            </a>
-                            <a href="features-settings.html" class="dropdown-item has-icon">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                class="dropdown-item has-icon text-danger">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                @if (auth()->user()->hasRole('pembeli'))
+                                    <a href="{{ route('homepage.profile') }}" class="dropdown-item has-icon">
+                                        <i class="far fa-user mx-1 mr-2"></i> Profile
+                                    </a>
+                                    <a href="" class="dropdown-item has-icon">
+                                        <i class="fas fa-info mx-1 mr-2"></i> Histori
+                                    </a>
+                                @endif
+                                <hr class="my-0" style="background-color: rgba(249, 249, 249, 0.2);">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="dropdown-item has-icon text-danger">
+                                    <i class="fas fa-sign-out-alt mx-1 mr-2"></i> Keluar
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- Navbar -->
+
 
     <!-- Main Content -->
     <div class="main-content">
