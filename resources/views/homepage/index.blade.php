@@ -10,13 +10,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/img/gambar/product.png" class="d-block w-50" alt="...">
+                    <img src="assets/img/carousel/1.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/gambar/product.png" class="d-block w-50" alt="...">
+                    <img src="assets/img/carousel/2.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/gambar/product.png" class="d-block w-50" alt="...">
+                    <img src="assets/img/carousel/3.png" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
@@ -29,30 +29,31 @@
             </button>
         </div>
 
-
+<br>
+<br>
         <div class="d-flex justify-content-center">
             <div class="row">
                 <div class="col-md-3">
                     <div class="card">
-                        <img class="card-img-top" src="your-image.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="assets/img/icon/kategori1.png" alt="Card image cap">
                     </div>
                     <p class="text-title">Makanan</p>
                 </div>
                 <div class="col-md-3">
                     <div class="card">
-                        <img class="card-img-top" src="your-image.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="assets/img/icon/kategori1.png" alt="Card image cap">
                     </div>
                     <p class="text-title">Minuman</p>
                 </div>
                 <div class="col-md-3">
                     <div class="card">
-                        <img class="card-img-top" src="your-image.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="assets/img/icon/kategori1.png" alt="Card image cap">
                     </div>
                     <p class="text-title">Kripik</p>
                 </div>
                 <div class="col-md-3">
                     <div class="card">
-                        <img class="card-img-top" src="your-image.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="assets/img/icon/kategori1.png" alt="Card image cap">
                     </div>
                     <p class="text-title">Kerajinan</p>
                 </div>
@@ -64,7 +65,7 @@
             <div class="row">
                 <div class="col-md-1">
                     <div class="card">
-                        <img class="card-img-top" src="your-image.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="assets/img/icon/sub.png" alt="Card image cap">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -116,7 +117,7 @@
             <div class="row">
                 <div class="col-md-1">
                     <div class="card">
-                        <img class="card-img-top" src="your-image.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="assets/img/icon/sub.png" alt="Card image cap">
                     </div>
                 </div>
                 <div class="col-md-4">

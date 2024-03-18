@@ -97,6 +97,7 @@ class HomeController extends Controller
             ]);
 
             $user->password = Hash::make($request->input('password_new'));
+            $user->save();
         }
 
 

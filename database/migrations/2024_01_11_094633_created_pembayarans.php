@@ -20,9 +20,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->restrictOnDelete();
             $table->foreign('keranjang_id')->references('id')->on('keranjangs')->restrictOnDelete();
             $table->string('reference');
-            $table->string('merchan_ref');
+            $table->string('merchant_ref');
             $table->integer('total_amount');
-            $table->enum('status', ['paid', 'pending' , 'unpaid'])->default('unpaid');
+            $table->enum('status', ['paid', 'pending', 'unpaid'])->default('unpaid');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -22,6 +23,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        // $user = auth()->user();
+        // $roles = $user->roles()->pluck('name')->toArray();
+        // dd($user, $roles);
         return view('home');
     }
 

@@ -272,12 +272,14 @@
 
         </div>
 
-
+<br>
+<br>
+<br>
     </div>
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-4">
-                <img src="logoipsum.png" alt="logo" class="img-fluid">
+                <img src="assets/img/avatar/logobiru.png" alt="logo" class="img-fluid" >
                 <h5>Penjualan Produk UMKM Desa Wringinsongo</h5>
             </div>
             <div class="col-md-4">
@@ -315,6 +317,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- General JS Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">

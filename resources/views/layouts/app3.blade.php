@@ -19,7 +19,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-primary-nav sticky-top card">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="/">
+            <a class="navbar-brand d-flex align-items-center" href="/shop">
                 <img src="{{ asset('assets/img/avatar/logobiru.png') }}" style="max-content">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -28,11 +28,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <div class="search">
+                    {{-- <div class="search">
                         <span class="fa fa-search"></span>
                         <input type="text" class="searchinput" placeholder="cari" aria-label="cari"
                             aria-describedby="basic-addon1">
+                    </div> --}}
+
+                    <div class="search-container" style="position: relative; display: inline-block;">
+                        <span class="fa fa-search search-icon" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: #555;"></span>
+                        <input type="text" class="search-input" style="padding: 10px 30px 10px 35px; border: 1px solid #ccc; border-radius: 20px; outline: none; width: 500px; transition: width 0.4s ease-in-out;" placeholder="Cari..." aria-label="Cari" aria-describedby="basic-addon1">
                     </div>
+
 
                 </ul>
                 <ul class="navbar-nav ml-auto navbar-atas">
@@ -146,6 +152,10 @@
     <div class="main-content">
         @yield('landingpage')
     </div>
+
+
+    <br>
+    <br>
 
     <footer class="main-footer">
         @include('layouts.footer')

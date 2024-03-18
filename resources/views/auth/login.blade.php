@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4"
-                                style="width: 627px">
+                                style="width: 812px">
                                 Masuk
                             </button>
                         </div>

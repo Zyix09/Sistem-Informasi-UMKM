@@ -112,7 +112,7 @@
                                             style="min-width: 150px;">Username</label>
                                         <input class="form-control" id="inputUsername" type="text" name="username"
                                             value="@if (is_null($profile)) {{ $users->name }}@else{{ $profile->name }} @endif"
-                                            pattern="^[A-Za-z\s]+$" maxlength="30" oninput="validateUsername(this)"
+                                             maxlength="30" oninput="validateUsername(this)"
                                             style="width: 70%;" required>
                                     </div>
 

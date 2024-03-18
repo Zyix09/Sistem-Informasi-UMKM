@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-4">
-            <img src="logoipsum.png" alt="logo" class="img-fluid">
+            <img src="assets/img/avatar/logobiru.png" alt="logo" class="img-fluid">
             <h5>Penjualan Produk UMKM Desa Wringinsongo</h5>
         </div>
         <div class="col-md-4">
